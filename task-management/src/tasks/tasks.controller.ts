@@ -1,6 +1,7 @@
+import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TasksService } from './tasks.service';
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Task, TaskStatus } from './task.model';
 
 
@@ -11,8 +12,13 @@ export class TasksController {
 
 
     @Get() // provided a decorator for GET method
-    getTasks(): Task[] {
-        return this.tasksService.getAllTasks();
+    getTasks(@Query() filterDto : GetTasksFilterDto): Task[] {
+
+        if(Object.keys(filterDto).length) {
+            return this.tasksService.getTasksWithFilters(filterDto);
+        } else {
+            return this.tasksService.getAllTasks();
+        }
     }
 
     @Get(':id') // provided id url path
@@ -21,6 +27,7 @@ export class TasksController {
     }
 
     @Post() // provided a decorator for POST method
+    @UsePipes(ValidationPipe)
     createTask(@Body() createTaskDto : CreateTaskDto): Task {
         return this.tasksService.createTask(createTaskDto);
     }
