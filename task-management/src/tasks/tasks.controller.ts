@@ -1,11 +1,11 @@
+import { CreateTaskDto } from './dto/create-task.dto';
 import { TasksService } from './tasks.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Task } from './task.model';
-import { stringify } from 'node:querystring';
 
 @Controller('tasks')
 export class TasksController {
-    constructor(private tasksService : TasksService){ } // Provided injectable service 
+    constructor(private tasksService : TasksService){} // Provided injectable service 
 
 
     @Get() // provided a decorator for GET method
@@ -13,12 +13,15 @@ export class TasksController {
         return this.tasksService.getAllTasks();
     }
 
+    @Get(':id') // provided id url path
+    getTaskById(@Param('id') id : string): Task {
+        return this.tasksService.getTaskById(id);
+    }
+    
+
     @Post() // provided a decorator for POST method
-    createTask( 
-        @Body('title') title: string,
-        @Body('description') description: string,
-    ): Task {
-        return this.tasksService.createTask(title,description);
+    createTask(@Body() createTaskDto : CreateTaskDto): Task {
+        return this.tasksService.createTask(createTaskDto);
     }
 }      
 
