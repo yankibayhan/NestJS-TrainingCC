@@ -2,7 +2,7 @@
 Training Files for NestJS
 
 # On-Development
-1. CRUD application
+1. <del>CRUD application</del>
 
 # Incoming
 1. Data Persistance PostgreSQL & TypeORM
