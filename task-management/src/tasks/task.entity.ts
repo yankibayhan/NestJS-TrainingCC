@@ -1,8 +1,9 @@
-import { TaskStatus } from './task.model';
+// import { TaskStatus } from './task.model';
+import { TaskStatus } from './task-status.enum'
 import {BaseEntity, Entity, PrimaryGeneratedColumn, Column} from 'typeorm'
 
 
-// Database Logic for Tasks
+// Database Model for Tasks
 
 @Entity()
 export class Task extends BaseEntity {
