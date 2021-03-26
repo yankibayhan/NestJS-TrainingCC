@@ -7,7 +7,7 @@ export class AuthCredentialsDto {
     @MaxLength(20)
     username: string
 
-
+    
     @IsString()
     @MinLength(8)  // Validations 
     @MaxLength(20)
