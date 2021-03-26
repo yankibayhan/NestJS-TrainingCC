@@ -1,15 +1,17 @@
+import { AuthGuard } from '@nestjs/passport';
 import { TaskStatusValidationPipe } from './pipes/task-status-validation.pipe';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TasksService } from './tasks.service';
 import {Task} from './task.entity';
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { TaskStatus } from './task-status.enum';
 // import { Task, TaskStatus } from './task.model';
 
 
 // Big Magic Happens in Controller
 @Controller('tasks')
+@UseGuards(AuthGuard())
 export class TasksController {
     constructor(private tasksService : TasksService){} // Provided injectable service 
 
@@ -18,7 +20,7 @@ export class TasksController {
       return this.tasksService.getTasks(filterDto);
     }
   
-    @Get('/:id')
+    @Get(':id')
     getTaskById(@Param('id', ParseIntPipe) id: number): Promise<Task> {
       return this.tasksService.getTaskById(id);
     }
@@ -29,12 +31,12 @@ export class TasksController {
       return this.tasksService.createTask(createTaskDto);
     }
   
-    @Delete('/:id')
+    @Delete(':id')
     deleteTask(@Param('id', ParseIntPipe) id: number): Promise<void> {
       return this.tasksService.deleteTask(id);
     }
   
-    @Patch('/:id/status')
+    @Patch(':id/status')
     updateTaskStatus(
       @Param('id', ParseIntPipe) id: number,
       @Body('status', TaskStatusValidationPipe) status: TaskStatus,
