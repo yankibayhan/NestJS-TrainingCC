@@ -18,7 +18,7 @@ export class UserRepository extends Repository<User> {
         const salt = await bcrypt.genSalt() // Generated Salt for Password Hash
         const user = new User();
         user.username = username;
-        user.password = password;
+        user.password = await this.hashPassword(password, salt);
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         try {
@@ -33,6 +33,9 @@ export class UserRepository extends Repository<User> {
         }
     }
 
-    private async 
+    private async hashPassword(password: string, salt: string): Promise<string> {
+        return bcrypt.hash(password, salt);
+
+    }
 
 }
