@@ -15,10 +15,10 @@ export class UserRepository extends Repository<User> {
         const {username, password} = credentialDto;
 
         
-        const salt = await bcrypt.genSalt() // Generated Salt for Password Hash
         const user = new User();
         user.username = username;
-        user.password = await this.hashPassword(password, salt);
+        user.salt = await bcrypt.genSalt() // Generated Salt for Password Hash
+        user.password = await this.hashPassword(password, user.salt);
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         try {
