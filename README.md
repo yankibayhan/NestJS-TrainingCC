@@ -6,7 +6,7 @@ Training Files for NestJS
 2. <del>Data Persistance PostgreSQL & TypeORM</del> (Finished)
 3. <del>Authentication System</del> (Finished)
 4. <del>Authorization System</del> (Finished) 
-5. Logging (Developing)
+5. <del>Logging</del> (Finished)
 
 # Incoming
 1. Pro-Productional Configuration
