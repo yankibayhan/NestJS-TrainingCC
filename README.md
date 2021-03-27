@@ -7,8 +7,8 @@ Training Files for NestJS
 3. <del>Authentication System</del> (Finished)
 4. <del>Authorization System</del> (Finished) 
 5. <del>Logging</del> (Finished)
+6. Pro-Productional Configuration (Developing)
 
 # Incoming
-1. Pro-Productional Configuration
-2. NestJS app testing
-3. GraphQL + MongoDB
+1. App testing
+2. GraphQL + MongoDB
