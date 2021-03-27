@@ -4,11 +4,11 @@ Training Files for NestJS
 # On-Development
 1. <del>CRUD application</del> (Finished)
 2. <del>Data Persistance PostgreSQL & TypeORM</del> (Finished)
-3. Authentication System (Developing)
+3. <del>Authentication System</del> (Finished)
+4. Authorization System (Developing)
 
 # Incoming
-1. Authorization System
-2. Logging
-3. Pro-Productional Configuration
-4. NestJS app testing
-5. GraphQL + MongoDB
+1. Logging
+2. Pro-Productional Configuration
+3. NestJS app testing
+4. GraphQL + MongoDB
