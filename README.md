@@ -7,7 +7,7 @@ Training Files for NestJS
 3. <del>Authentication System</del> (Finished)
 4. <del>Authorization System</del> (Finished) 
 5. <del>Logging</del> (Finished)
-6. Pro-Productional Configuration (Developing)
+6. <del>Pro-Productional Configuration</del> (Finished)
 
 # Incoming
 1. App testing
